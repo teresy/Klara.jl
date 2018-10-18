@@ -73,7 +73,7 @@ mcse(s::VariableNState{Multivariate}, ::Type{Val{:bm}}, r::AbstractVector=1:s.si
 ## Statistical Science, 1992, 7 (4), pp 473-483
 
 function mcvar(v::AbstractVector{T}, ::Type{Val{:imse}}, maxlag::Integer=length(v)-1) where T
-  k = convert(Integer, floor((maxlag-1)/2))
+  k = convert(Integer, fld((maxlag-1),2))
   m = k+1
 
   # Preallocate memory
@@ -135,7 +135,7 @@ mcse(s::VariableNState{Multivariate}, ::Type{Val{:imse}}, r::AbstractVector=1:s.
 ## Statistical Science, 1992, 7 (4), pp 473-483
 
 function mcvar(v::AbstractVector{T}, ::Type{Val{:ipse}}, maxlag::Integer=length(v)-1) where T
-  k = convert(Integer, floor((maxlag-1)/2))
+  k = convert(Integer, fld((maxlag-1),2))
 
   # Preallocate memory
   g = Array(T, k+1)
